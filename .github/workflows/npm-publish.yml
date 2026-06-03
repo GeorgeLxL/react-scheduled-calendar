@@ -1,0 +1,39 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'        # fires on tags like v1.0.0, v1.2.3, etc.
+  workflow_dispatch:    # also allow manual runs from the Actions tab
+
+permissions:
+  contents: write       # needed to create the GitHub release
+  id-token: write       # enables npm provenance (optional but recommended)
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - run: npm test --if-present    # only runs if a "test" script exists
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          generate_release_notes: true   # auto-generated from PRs/commits since last tag
