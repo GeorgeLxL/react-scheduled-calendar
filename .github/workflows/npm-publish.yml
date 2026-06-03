@@ -8,7 +8,7 @@ on:
 
 permissions:
   contents: write       # needed to create the GitHub release
-  id-token: write       # enables npm provenance (optional but recommended)
+  id-token: write       # required for Trusted Publishing + provenance
 
 jobs:
   publish:
@@ -25,15 +25,13 @@ jobs:
 
       - run: npm run build
 
-      - run: npm test --if-present    # only runs if a "test" script exists
+      - run: npm test --if-present
 
       - name: Publish to npm
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          generate_release_notes: true   # auto-generated from PRs/commits since last tag
+          generate_release_notes: true
