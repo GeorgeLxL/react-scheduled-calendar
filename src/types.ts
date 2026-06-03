@@ -21,7 +21,7 @@ export type CalendarView = 'day' | 'week' | 'month';
 
 export type ThemeMode = 'light' | 'dark' | 'auto';
 
-export type LocaleCode = 'en' | 'ja' | 'fr' | 'es' | 'pt';
+export type LocaleCode = 'en' | 'ja' | 'fr' | 'es' | 'pt' | 'zh';
 
 /** All UI strings the calendar renders. Override partially via the `messages` prop. */
 export interface CalendarMessages {

@@ -1,4 +1,11 @@
-import { enUS, ja as jaLocale, fr as frLocale, es as esLocale, pt as ptLocale } from 'date-fns/locale';
+import {
+  enUS,
+  ja as jaLocale,
+  fr as frLocale,
+  es as esLocale,
+  pt as ptLocale,
+  zhCN as zhLocale,
+} from 'date-fns/locale';
 import type { Locale } from 'date-fns';
 import type { CalendarMessages, LocaleCode } from '../types';
 import { en } from './en';
@@ -6,14 +13,16 @@ import { ja } from './ja';
 import { fr } from './fr';
 import { es } from './es';
 import { pt } from './pt';
+import { zh } from './zh';
 
-const dictionaries: Record<LocaleCode, CalendarMessages> = { en, ja, fr, es, pt };
+const dictionaries: Record<LocaleCode, CalendarMessages> = { en, ja, fr, es, pt, zh };
 const dateFnsLocales: Record<LocaleCode, Locale> = {
   en: enUS,
   ja: jaLocale,
   fr: frLocale,
   es: esLocale,
   pt: ptLocale,
+  zh: zhLocale,
 };
 
 export function resolveMessages(

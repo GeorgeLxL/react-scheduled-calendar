@@ -4,7 +4,7 @@ A headless, theme-able, drag-and-drop React calendar with day / week / month vie
 
 - 🪶 **Headless-ish** — sensible default UI, but every interaction is overridable
 - 🎨 **Themed with CSS variables** — light, dark, `auto` (follows OS) out of the box, plus full custom-theme support
-- 🌐 **i18n** — bundled `en`, `ja`, `fr`, `es`, `pt`, plus full message override
+- 🌐 **i18n** — bundled `en`, `ja`, `fr`, `es`, `pt`, `zh`, plus full message override
 - 🖱️ **Drag & drop** — move events between slots; hold Ctrl/⌘ to copy
 - 📋 **Built-in copy / cut / paste / delete** clipboard with right-click context menu
 - 🔌 **Controlled + uncontrolled** — like `<input>`. Use it zero-config, or wire every callback
@@ -87,7 +87,7 @@ Or apply your own theme via CSS variables:
 ## i18n
 
 ```tsx
-<Calendar locale="ja" />     // en | ja | fr | es | pt
+<Calendar locale="ja" />     // en | ja | fr | es | pt | zh
 ```
 
 Override individual strings:
@@ -168,7 +168,7 @@ Override individual strings:
 | `onEventsChange` | `(events) => void` | – | Fires on every internal mutation |
 | `view` / `defaultView` | `'day' \| 'week' \| 'month'` | `'month'` | |
 | `anchor` / `defaultAnchor` | `Date` | now | |
-| `locale` | `'en' \| 'ja' \| 'fr' \| 'es' \| 'pt'` | `'en'` | |
+| `locale` | `'en' \| 'ja' \| 'fr' \| 'es' \| 'pt' \| 'zh'` | `'en'` | |
 | `messages` | `Partial<CalendarMessages>` | – | Deep-merged onto the locale defaults |
 | `weekStartsOn` | `0..6` | `0` (Sun) | |
 | `slotMinutes` | `15 \| 30 \| 60` | `15` | |
