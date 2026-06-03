@@ -130,7 +130,7 @@ export function TimeGrid<TMeta>({
       {/* Column headers (day names) */}
       <div
         className="rsc-time-grid__headers"
-        style={{ gridTemplateColumns: `48px repeat(${days.length}, 1fr)` }}
+        style={{ gridTemplateColumns: `48px repeat(${days.length}, minmax(0, 1fr))` }}
       >
         <div className="rsc-time-grid__corner" />
         {days.map(day => {
@@ -150,7 +150,7 @@ export function TimeGrid<TMeta>({
       <div className="rsc-time-grid__body">
         <div
           className="rsc-time-grid__grid"
-          style={{ gridTemplateColumns: `48px repeat(${days.length}, 1fr)` }}
+          style={{ gridTemplateColumns: `48px repeat(${days.length}, minmax(0, 1fr))` }}
         >
           {/* Time-label column */}
           <div className="rsc-time-grid__label-col" style={{ gridColumn: 1, gridRow: `1 / span ${slots}` }}>
