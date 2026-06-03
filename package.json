@@ -1,6 +1,6 @@
 {
   "name": "react-scheduled-calendar",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Headless, theme-able, drag-and-drop React calendar (day / week / month) with i18n. Bring your own form.",
   "author": "Sato Takeru",
   "license": "MIT",
