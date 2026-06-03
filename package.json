@@ -1,0 +1,67 @@
+{
+  "name": "react-scheduled-calendar",
+  "version": "1.0.0",
+  "description": "Headless, theme-able, drag-and-drop React calendar (day / week / month) with i18n. Bring your own form.",
+  "author": "Sato Takeru",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeorgeLxL/react-scheduled-calendar.git"
+  },
+  "homepage": "https://github.com/GeorgeLxL/react-scheduled-calendar#readme",
+  "bugs": {
+    "url": "https://github.com/GeorgeLxL/react-scheduled-calendar/issues"
+  },
+  "keywords": [
+    "react",
+    "calendar",
+    "schedule",
+    "scheduler",
+    "drag-and-drop",
+    "headless",
+    "typescript",
+    "i18n",
+    "dark-mode"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "date-fns": ">=3.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "date-fns": "^4.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.3.5",
+    "typescript": "~5.9.3"
+  }
+}

@@ -1,0 +1,541 @@
+/* react-scheduled-calendar — public stylesheet.
+ *
+ * Theming: every color/border is a CSS variable. Override variables at any
+ * level above .rsc-root to retheme without touching the package CSS. The
+ * built-in `theme` prop just sets `data-theme="light|dark|auto"` and toggles
+ * between the two preset variable blocks below.
+ */
+
+/* ── Light defaults ─────────────────────────────────────────────────────── */
+.rsc-root,
+.rsc-root[data-theme='light'] {
+  --rsc-bg: #ffffff;
+  --rsc-fg: #111827;
+  --rsc-muted: #6b7280;
+  --rsc-faint: #9ca3af;
+  --rsc-border: #e5e7eb;
+  --rsc-border-strong: #d1d5db;
+  --rsc-today-bg: rgba(17, 24, 39, 0.04);
+  --rsc-hover: #f9fafb;
+  --rsc-selecting: #dbeafe;
+  --rsc-now-line: #ef4444;
+  --rsc-event-fg: #ffffff;
+  --rsc-event-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --rsc-popover-bg: #ffffff;
+  --rsc-popover-border: #e5e7eb;
+  --rsc-popover-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+  --rsc-btn-bg: #ffffff;
+  --rsc-btn-fg: #4b5563;
+  --rsc-btn-border: #e5e7eb;
+  --rsc-btn-hover: #f9fafb;
+  --rsc-btn-active-bg: #111827;
+  --rsc-btn-active-fg: #ffffff;
+  --rsc-btn-primary-bg: #111827;
+  --rsc-btn-primary-fg: #ffffff;
+  --rsc-btn-danger-fg: #dc2626;
+  --rsc-btn-danger-border: #fecaca;
+  --rsc-input-bg: #ffffff;
+  --rsc-input-border: #e5e7eb;
+  --rsc-input-focus: rgba(17, 24, 39, 0.16);
+  --rsc-font:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', 'Noto Sans JP', sans-serif;
+}
+
+/* ── Dark overrides ─────────────────────────────────────────────────────── */
+.rsc-root[data-theme='dark'] {
+  --rsc-bg: #0f172a;
+  --rsc-fg: #f1f5f9;
+  --rsc-muted: #94a3b8;
+  --rsc-faint: #64748b;
+  --rsc-border: #1e293b;
+  --rsc-border-strong: #334155;
+  --rsc-today-bg: rgba(241, 245, 249, 0.06);
+  --rsc-hover: #1e293b;
+  --rsc-selecting: #1e3a8a;
+  --rsc-now-line: #f87171;
+  --rsc-event-fg: #ffffff;
+  --rsc-event-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --rsc-popover-bg: #1e293b;
+  --rsc-popover-border: #334155;
+  --rsc-popover-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --rsc-btn-bg: #1e293b;
+  --rsc-btn-fg: #cbd5e1;
+  --rsc-btn-border: #334155;
+  --rsc-btn-hover: #334155;
+  --rsc-btn-active-bg: #f1f5f9;
+  --rsc-btn-active-fg: #0f172a;
+  --rsc-btn-primary-bg: #2563eb;
+  --rsc-btn-primary-fg: #ffffff;
+  --rsc-btn-danger-fg: #f87171;
+  --rsc-btn-danger-border: #7f1d1d;
+  --rsc-input-bg: #0f172a;
+  --rsc-input-border: #334155;
+  --rsc-input-focus: rgba(148, 163, 184, 0.3);
+}
+
+/* ── Auto: follow the OS only when explicitly opted-in ──────────────────── */
+@media (prefers-color-scheme: dark) {
+  .rsc-root[data-theme='auto'] {
+    --rsc-bg: #0f172a;
+    --rsc-fg: #f1f5f9;
+    --rsc-muted: #94a3b8;
+    --rsc-faint: #64748b;
+    --rsc-border: #1e293b;
+    --rsc-border-strong: #334155;
+    --rsc-today-bg: rgba(241, 245, 249, 0.06);
+    --rsc-hover: #1e293b;
+    --rsc-selecting: #1e3a8a;
+    --rsc-now-line: #f87171;
+    --rsc-event-fg: #ffffff;
+    --rsc-event-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --rsc-popover-bg: #1e293b;
+    --rsc-popover-border: #334155;
+    --rsc-popover-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    --rsc-btn-bg: #1e293b;
+    --rsc-btn-fg: #cbd5e1;
+    --rsc-btn-border: #334155;
+    --rsc-btn-hover: #334155;
+    --rsc-btn-active-bg: #f1f5f9;
+    --rsc-btn-active-fg: #0f172a;
+    --rsc-btn-primary-bg: #2563eb;
+    --rsc-btn-primary-fg: #ffffff;
+    --rsc-btn-danger-fg: #f87171;
+    --rsc-btn-danger-border: #7f1d1d;
+    --rsc-input-bg: #0f172a;
+    --rsc-input-border: #334155;
+    --rsc-input-focus: rgba(148, 163, 184, 0.3);
+  }
+}
+
+/* ── Root ───────────────────────────────────────────────────────────────── */
+.rsc-root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  min-height: 480px;
+  background: var(--rsc-bg);
+  color: var(--rsc-fg);
+  font-family: var(--rsc-font);
+  font-size: 14px;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+.rsc-root *,
+.rsc-root *::before,
+.rsc-root *::after {
+  box-sizing: border-box;
+}
+.rsc-root button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ── Toolbar ────────────────────────────────────────────────────────────── */
+.rsc-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.rsc-toolbar__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.rsc-toolbar__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rsc-toolbar__title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.rsc-toolbar__btn {
+  background: var(--rsc-btn-bg);
+  color: var(--rsc-btn-fg);
+  border: 1px solid var(--rsc-btn-border);
+  border-radius: 12px;
+  padding: 6px 12px;
+  font-size: 13px;
+  transition: background 0.15s;
+}
+.rsc-toolbar__btn:hover {
+  background: var(--rsc-btn-hover);
+}
+
+/* ── View switcher ──────────────────────────────────────────────────────── */
+.rsc-view-switcher {
+  display: inline-flex;
+  border: 1px solid var(--rsc-btn-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.rsc-view-switcher__btn {
+  background: transparent;
+  color: var(--rsc-btn-fg);
+  border: none;
+  padding: 6px 12px;
+  font-size: 13px;
+  transition: background 0.15s;
+}
+.rsc-view-switcher__btn:hover {
+  background: var(--rsc-btn-hover);
+}
+.rsc-view-switcher__btn--active {
+  background: var(--rsc-btn-active-bg);
+  color: var(--rsc-btn-active-fg);
+}
+
+/* ── Time grid (day / week) ─────────────────────────────────────────────── */
+.rsc-time-grid {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  border: 1px solid var(--rsc-border);
+  border-radius: 16px;
+  user-select: none;
+}
+.rsc-time-grid__headers {
+  display: grid;
+  background: var(--rsc-bg);
+  border-bottom: 1px solid var(--rsc-border);
+  flex-shrink: 0;
+}
+.rsc-time-grid__corner {
+  border-right: 1px solid var(--rsc-border);
+}
+.rsc-time-grid__column-header {
+  padding: 8px 0;
+  text-align: center;
+  border-right: 1px solid var(--rsc-border);
+}
+.rsc-time-grid__column-header:last-child {
+  border-right: none;
+}
+.rsc-time-grid__dow {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--rsc-faint);
+}
+.rsc-time-grid__day-num {
+  margin: 2px auto 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--rsc-fg);
+}
+.rsc-time-grid__day-num--today {
+  background: var(--rsc-btn-active-bg);
+  color: var(--rsc-btn-active-fg);
+}
+.rsc-time-grid__body {
+  flex: 1;
+  overflow-y: auto;
+}
+.rsc-time-grid__grid {
+  display: grid;
+  position: relative;
+}
+.rsc-time-grid__label-col {
+  position: relative;
+}
+.rsc-time-grid__label-cell {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-right: 6px;
+  border-right: 1px solid var(--rsc-border);
+}
+.rsc-time-grid__label-cell--hour {
+  border-top: 1px solid var(--rsc-border-strong);
+}
+.rsc-time-grid__label-text {
+  font-size: 11px;
+  color: var(--rsc-muted);
+  margin-top: -7px;
+  line-height: 1;
+}
+.rsc-time-grid__day-col {
+  position: relative;
+  border-right: 1px solid var(--rsc-border);
+}
+.rsc-time-grid__day-col:last-child {
+  border-right: none;
+}
+.rsc-time-grid__slot {
+  position: relative;
+  cursor: pointer;
+}
+.rsc-time-grid__slot:hover {
+  background: var(--rsc-hover);
+}
+.rsc-time-grid__slot--hour {
+  border-top: 1px solid var(--rsc-border-strong);
+}
+.rsc-time-grid__slot--selecting {
+  background: var(--rsc-selecting);
+}
+.rsc-time-grid__now-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 2px solid var(--rsc-now-line);
+  z-index: 10;
+  pointer-events: none;
+}
+.rsc-time-grid__event {
+  position: absolute;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 11px;
+  color: var(--rsc-event-fg);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: var(--rsc-event-shadow);
+  z-index: 20;
+  transition: opacity 0.15s;
+}
+.rsc-time-grid__event:hover {
+  opacity: 0.9;
+}
+
+/* ── Default event chip (used unless renderEvent overrides) ─────────────── */
+.rsc-event-chip__title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+.rsc-event-chip__meta {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.9;
+  line-height: 1.2;
+}
+
+/* ── Month view ─────────────────────────────────────────────────────────── */
+.rsc-month {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--rsc-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.rsc-month__headers {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 1px solid var(--rsc-border);
+}
+.rsc-month__header-cell {
+  padding: 8px 0;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--rsc-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.rsc-month__grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(90px, 1fr);
+  overflow-y: auto;
+}
+.rsc-month__day {
+  padding: 6px;
+  border-right: 1px solid var(--rsc-border);
+  border-bottom: 1px solid var(--rsc-border);
+  background: var(--rsc-bg);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.rsc-month__day:hover {
+  background: var(--rsc-hover);
+}
+.rsc-month__day--off {
+  background: transparent;
+  opacity: 0.45;
+  cursor: default;
+}
+.rsc-month__day-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 4px;
+}
+.rsc-month__day-num {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--rsc-fg);
+}
+.rsc-month__day-num--today {
+  background: var(--rsc-btn-active-bg);
+  color: var(--rsc-btn-active-fg);
+}
+.rsc-month__day-num--off {
+  color: var(--rsc-faint);
+}
+.rsc-month__events {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.rsc-month__event {
+  width: 100%;
+  text-align: left;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  color: var(--rsc-event-fg);
+  border: none;
+  transition: opacity 0.15s;
+}
+.rsc-month__event:hover {
+  opacity: 0.85;
+}
+.rsc-month__event-title {
+  font-weight: 600;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rsc-month__more {
+  font-size: 11px;
+  color: var(--rsc-faint);
+  padding: 0 4px;
+}
+
+/* ── Context menu ───────────────────────────────────────────────────────── */
+.rsc-context-menu {
+  min-width: 180px;
+  background: var(--rsc-popover-bg);
+  border: 1px solid var(--rsc-popover-border);
+  border-radius: 12px;
+  box-shadow: var(--rsc-popover-shadow);
+  padding: 4px 0;
+  overflow: hidden;
+}
+.rsc-context-menu__item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--rsc-fg);
+  transition: background 0.15s;
+}
+.rsc-context-menu__item:hover:not(:disabled) {
+  background: var(--rsc-hover);
+}
+.rsc-context-menu__item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.rsc-context-menu__separator {
+  height: 1px;
+  background: var(--rsc-border);
+  margin: 4px 0;
+}
+
+/* ── Popovers (create + edit) ───────────────────────────────────────────── */
+.rsc-popover {
+  background: var(--rsc-popover-bg);
+  border: 1px solid var(--rsc-popover-border);
+  border-radius: 16px;
+  box-shadow: var(--rsc-popover-shadow);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--rsc-fg);
+}
+.rsc-popover__label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--rsc-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: -6px;
+}
+.rsc-popover__input {
+  width: 100%;
+  background: var(--rsc-input-bg);
+  color: var(--rsc-fg);
+  border: 1px solid var(--rsc-input-border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+}
+.rsc-popover__input:focus {
+  box-shadow: 0 0 0 2px var(--rsc-input-focus);
+}
+.rsc-popover__color {
+  width: 60px;
+  height: 32px;
+  border: 1px solid var(--rsc-input-border);
+  border-radius: 8px;
+  padding: 2px;
+  cursor: pointer;
+  background: transparent;
+}
+.rsc-popover__actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.rsc-popover__btn {
+  border-radius: 10px;
+  padding: 7px 14px;
+  font-size: 13px;
+  border: 1px solid transparent;
+  transition: background 0.15s, opacity 0.15s;
+}
+.rsc-popover__btn--primary {
+  background: var(--rsc-btn-primary-bg);
+  color: var(--rsc-btn-primary-fg);
+}
+.rsc-popover__btn--primary:hover {
+  opacity: 0.9;
+}
+.rsc-popover__btn--secondary {
+  background: var(--rsc-btn-bg);
+  color: var(--rsc-btn-fg);
+  border-color: var(--rsc-btn-border);
+}
+.rsc-popover__btn--secondary:hover {
+  background: var(--rsc-btn-hover);
+}
+.rsc-popover__btn--danger {
+  background: transparent;
+  color: var(--rsc-btn-danger-fg);
+  border-color: var(--rsc-btn-danger-border);
+}
+.rsc-popover__btn--danger:hover {
+  background: var(--rsc-hover);
+}
